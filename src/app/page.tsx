@@ -258,10 +258,10 @@ export default function Home() {
           user.phone.length == 0
       )
     ) {
-      return alert("Zorunlu alanlari doldurunuz");
+      return alert("Zorunlu alanları doldurunuz");
     }
 
-    alert("Rezervasyon islemi basarili :)");
+    alert("Rezervasyon işlemi başarılı :)");
   };
 
   return (
@@ -305,21 +305,30 @@ export default function Home() {
                 strokeWidth="0.5"
                 onClick={() => {
                   if (ticketSold) {
-                    return alert("Bu koltuk alinamaz");
+                    return alert("Bu koltuk alınamaz.");
                   }
 
                   if (!isSelected && selectedSeats.length === 3) {
-                    return alert("Maksimum 3 adet secebilirsiniz");
+                    return alert("Maksimum 3 adet seçebilirsiniz");
                   }
 
                   if (
                     firstClickToSeatCheck.current == null &&
                     selectedSeats.length === 0
                   ) {
-                    console.log("asdasd");
                     firstClickToSeatCheck.current = setTimeout(() => {
-                      alert("aaaaaaaaaaaaaaaaaaaaaaa");
-                    }, 5000);
+                      const shouldReload = confirm(
+                        "İşleme devam etmek istiyor musunuz?"
+                      );
+                      if (shouldReload) {
+                        location.reload();
+                        localStorage.setItem(
+                          "selected-seats",
+                          JSON.stringify([])
+                        );
+                        localStorage.setItem("user-data", JSON.stringify([]));
+                      }
+                    }, 30000);
                   } else if (firstClickToSeatCheck.current !== null) {
                     clearTimeout(firstClickToSeatCheck.current);
                   }
@@ -358,11 +367,11 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="bg-amber-300 h-6 w-4 rounded-sm"></div>
-            <p>Secili</p>
+            <p>Seçili</p>
           </div>
           <div className="flex flex-col items-center justify-center">
             <div className="bg-white border-gray-500 border h-6 w-4 rounded-sm"></div>
-            <p>Bos</p>
+            <p>Boş</p>
           </div>
         </div>
       </div>
@@ -402,7 +411,7 @@ export default function Home() {
           className="p-4  bg-gray-300 mb-4 cursor-pointer mt-8"
           onClick={save}
         >
-          <p className="text-center">Islemleri Tamamla</p>
+          <p className="text-center">İşlemleri Tamamla</p>
         </div>
 
         <div className="p-4  bg-gray-300 mb-4 mt-8 flex justify-between">
