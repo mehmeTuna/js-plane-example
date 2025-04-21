@@ -376,7 +376,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex-1 flex flex-col">
-        <div className="w-full max-w-3xl flex-1">
+        <div className="w-full max-w-3xl flex-1 mx-4">
           <div>
             <div
               className="flex items-center justify-between p-4  bg-gray-300 mb-2 cursor-pointer"
@@ -408,7 +408,7 @@ export default function Home() {
         </div>
 
         <div
-          className="p-4  bg-gray-300 mb-4 cursor-pointer mt-8"
+          className="p-4  bg-gray-300 mb-4 cursor-pointer mt-8 mx-4"
           onClick={save}
         >
           <p className="text-center">İşlemleri Tamamla</p>
@@ -427,7 +427,7 @@ export default function Home() {
           </div>
           <div>
             <div>
-              <div className="flex gap-2 items-end">
+              <div className="flex gap-2 items-end justify-end">
                 <p className="text-sm">{selectedSeats.length} x</p>
                 <div className="bg-amber-300 h-6 w-4 rounded-sm"></div>
               </div>
